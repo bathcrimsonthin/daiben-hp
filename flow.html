@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用の流れ - 代便（排泄代行サービス）</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 共通固定ヘッダー -->
+  <header>
+    <div class="header-top">
+      <div class="logo-area">
+        <img src="imgs/icon.png" alt="代便アイコン" class="logo-icon">
+        <h1>代便</h1>
+        <span>排泄代行サービス</span>
+      </div>
+      
+      <!-- 右側エリア（申込みボタン＋ハンバーガーボタン） -->
+      <div class="header-right">
+        <a href="apply.html" class="btn-apply">申込みはこちらから</a>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-menu" id="js-nav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="flow.html">利用の流れ</a></li>
+        <li><a href="price.html">料金表</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="apply.html">申し込み</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="page-container">
+    <!-- 両側に罫線のある中央見出し -->
+    <div class="title-with-lines">
+      <h2>利用の流れ</h2>
+    </div>
+
+    <!-- 利用の流れ詳細エリア -->
+    <section class="flow-detail-section">
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="flow-step-header">
+          <span class="flow-step-badge">Step.1</span>
+          <h3 class="flow-step-title">生体ナンバー・お支払い登録</h3>
+        </div>
+        <div class="flow-step-body">
+          <div class="flow-step-img-wrap">
+            <img src="imgs/register.png" alt="生体ナンバーと支払方法の登録" class="flow-step-img">
+          </div>
+          <div class="flow-step-text">
+            <p>
+              生体管理ナンバーとお支払い方法を設定するだけの簡単登録。<br>
+              面倒な事前準備や複雑な手続きは一切不要で、すぐにご利用を開始いただけます。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-connector-arrow">▼</div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="flow-step-header">
+          <span class="flow-step-badge">Step.2</span>
+          <h3 class="flow-step-title">アポート・専用施設での処理</h3>
+        </div>
+        <div class="flow-step-body">
+          <div class="flow-step-img-wrap">
+            <img src="imgs/step2.png" alt="アポートと専用処理施設での処理" class="flow-step-img">
+          </div>
+          <div class="flow-step-text">
+            <p>
+              排泄物の量が一定以上になると、専門スタッフが体内にアポート。痛みや不快感は一切ありません。
+              転送された排泄物は、当社の専用処理施設にて迅速かつ衛生的に処理されます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 共通フッター -->
+  <footer>
+    <div class="footer-logo">代便</div>
+    <div class="footer-company">株式会社DAIBEN</div>
+    <div class="copyright">© 20XX DAIBEN Inc. All Rights Reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

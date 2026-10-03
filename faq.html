@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - 代便（排泄代行サービス）</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 共通固定ヘッダー -->
+  <header>
+    <div class="header-top">
+      <div class="logo-area">
+        <img src="imgs/icon.png" alt="代便アイコン" class="logo-icon">
+        <h1>代便</h1>
+        <span>排泄代行サービス</span>
+      </div>
+      
+      <!-- 右側エリア（申込みボタン＋ハンバーガーボタン） -->
+      <div class="header-right">
+        <a href="apply.html" class="btn-apply">申込みはこちらから</a>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-menu" id="js-nav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="flow.html">利用の流れ</a></li>
+        <li><a href="price.html">料金表</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="apply.html">申し込み</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="page-container">
+    <!-- 両側に罫線のある中央見出し -->
+    <div class="title-with-lines">
+      <h2>FAQ</h2>
+    </div>
+
+    <!-- FAQアコーディオンエリア -->
+    <section class="faq-section">
+      <p class="faq-lead">お客様から多く寄せられるご質問にお答えいたします。</p>
+
+      <div class="faq-list">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <button class="faq-question js-faq-toggle">
+            <span class="faq-q-icon">Q</span>
+            <span class="faq-question-text">アポート（転送）時に痛みや体の不快感はありますか？</span>
+            <span class="faq-toggle-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-a-icon">A</span>
+              <p>痛みや違和感は一切ありません。当社の独自技術である量子アポートシステムにより、感覚器官に刺激を与えることなく一瞬で転送が完了します。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <button class="faq-question js-faq-toggle">
+            <span class="faq-q-icon">Q</span>
+            <span class="faq-question-text">外出先や海外でもアポート機能を利用できますか？</span>
+            <span class="faq-toggle-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-a-icon">A</span>
+              <p>国内であれば電波の届く場所全域でご利用いただけます。海外でのご利用に関しましては、現在順次対応エリアを拡大しております。対応国・地域の詳細はサポートまでお問い合わせください。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <button class="faq-question js-faq-toggle">
+            <span class="faq-q-icon">Q</span>
+            <span class="faq-question-text">月途中でプラン変更や解約をすることはできますか？</span>
+            <span class="faq-toggle-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-a-icon">A</span>
+              <p>マイページよりいつでも変更・解約のお手続きが可能です。プラン変更は翌月1日より適用され、解約時の違約金や解約手数料は一切かかりません。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <button class="faq-question js-faq-toggle">
+            <span class="faq-q-icon">Q</span>
+            <span class="faq-question-text">転送された排泄物はどのように処理されますか？</span>
+            <span class="faq-toggle-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-a-icon">A</span>
+              <p>当社の専用バイオ処理施設に直送され、環境基準に基づき迅速かつ完全に分解・無害化処理が行われます。個人情報や生体データが外部に漏洩することは一切ありません。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 共通フッター -->
+  <footer>
+    <div class="footer-logo">代便</div>
+    <div class="footer-company">株式会社DAIBEN</div>
+    <div class="copyright">© 20XX DAIBEN Inc. All Rights Reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1120 @@
+@charset "UTF-8";
+
+/* ==========================================
+   基本リセット・全体設定
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  color: #000000;
+  /* ヘッダーが固定(position: fixed)されているため、重なり防止用の余白を設定 */
+  padding-top: 105px;
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+/* ==========================================
+   固定ヘッダー (position: fixed)
+   ========================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* ロゴと申込ボタンの配置 */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 240px;
+}
+
+/* ロゴエリア全体の配置調整 */
+.logo-area {
+  display: flex;
+  align-items: center; /* アイコンと文字の縦中央を揃える */
+  gap: 10px;           /* アイコン・タイトル・補足文の間隔 */
+}
+
+/* アイコン画像の設定 */
+.logo-icon {
+  height: 32px;        /* h1のフォントサイズ(32px)と高さを一致させる */
+  width: auto;         /* 横幅はアスペクト比を維持 */
+  display: block;
+}
+
+.logo-area h1 {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1;      /* 余白を詰めてアイコンの高さを揃えやすくする */
+}
+
+.logo-area span {
+  font-size: 14px;
+  color: #000;
+  margin-left: 5px;    /* サービス名と補足テキストの間の余白 */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-apply {
+  background-color: #CA3939;
+  color: #ffffff;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.btn-apply:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .logo-area h1 {
+    font-size: 24px;
+  }
+
+  /* スマホ時のアイコンの高さ調整 */
+  .logo-icon {
+    height: 24px;
+  }
+
+  .logo-area span {
+    font-size: 11px;
+  }
+}
+
+/* ------------------------------------------
+   ハンバーガーボタン（デフォルトは非表示）
+   ------------------------------------------ */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 11px; }
+.hamburger span:nth-child(3) { top: 22px; }
+
+.hamburger.active span:nth-child(1) {
+  top: 11px;
+  transform: rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  top: 11px;
+  transform: rotate(-45deg);
+}
+
+/* ------------------------------------------
+   PC用ナビゲーション
+   ------------------------------------------ */
+nav.nav-menu {
+  background-color: #000000;
+  transition: all 0.3s ease;
+  padding: 0 240px;
+}
+
+nav.nav-menu ul {
+  display: flex;
+  list-style: none;
+  padding: 10px 0;
+  width: 100%;
+}
+
+nav.nav-menu li {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+nav.nav-menu li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 55%;
+  background-color: #EEEEEE;
+}
+
+nav.nav-menu li:last-child::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 55%;
+  background-color: #EEEEEE;
+}
+
+nav.nav-menu li a {
+  display: block;
+  color: #EEEEEE;
+  text-decoration: none;
+  padding: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+nav.nav-menu li a:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================
+   ヒーローセクション（常時スライド付き）
+   ========================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  animation: continuous-slide 25s linear infinite;
+}
+
+.slide {
+  width: calc(100vw / 3);
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+@keyframes continuous-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  padding-left: 300px;
+}
+
+.hero-title {
+  font-size: 52px;
+  line-height: 1.3;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero-title span {
+  color: #347DCE;
+}
+
+/* ==========================================
+   レスポンシブ対応（共通・ヘッダー/ナビ）
+   ========================================== */
+
+/* ① タブレット・中画面（1024px以下） */
+@media (max-width: 1024px) {
+  .header-top,
+  nav.nav-menu {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .hero-content {
+    padding-left: 44px;
+  }
+
+  nav.nav-menu li a {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+/* ② スマホ画面（768px以下） */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .header-top {
+    padding: 10px 15px;
+  }
+
+  .slide {
+    width: calc(100vw / 2);
+  }
+
+  .hero {
+    height: 280px;
+  }
+
+  .hero-content {
+    padding-left: 22px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .logo-area h1 {
+    font-size: 24px;
+  }
+
+  .logo-area span {
+    font-size: 11px;
+  }
+
+  .btn-apply {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  nav.nav-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    background-color: #000000;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  nav.nav-menu.active {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  nav.nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+  }
+
+  nav.nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav.nav-menu li::before,
+  nav.nav-menu li:last-child::after {
+    display: none;
+  }
+
+  nav.nav-menu li a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #222;
+  }
+}
+
+/* ==========================================
+   トップページ：利用の流れ (Step) セクション
+   ========================================== */
+.steps-section {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.steps-title {
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.step-box {
+  flex: 1;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-num {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-family: serif;
+}
+
+.step-img-wrap {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.step-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.step-desc {
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.7;
+  width: 100%;
+}
+
+.step-arrow {
+  font-size: 36px;
+  margin-top: 80px;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-arrow {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: rotate(90deg);
+  }
+}
+
+/* ==========================================
+   こんな方におすすめ！ セクション
+   ========================================== */
+.recommend-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.recommend-title {
+  color: #347DCE;
+  font-size: 22px;
+  margin-bottom: 40px;
+  font-weight: normal;
+}
+
+.recommend-grid {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+
+.recommend-item {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+}
+
+.circle-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.recommend-item p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.recommend-summary {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+/* ==========================================
+   「利用の流れ」個別ページ (flow.html) スタイル
+   ========================================== */
+
+/* メインコンテナ */
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 20px 80px;
+}
+
+/* 両側罫線付き中央見出し */
+.title-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.title-with-lines::before,
+.title-with-lines::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #333333;
+}
+
+.title-with-lines h2 {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 0 30px;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+/* ステップ詳細カード構造 */
+.flow-detail-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.flow-step-card {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.flow-step-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #347DCE;
+  padding-bottom: 10px;
+}
+
+.flow-step-badge {
+  background-color: #347DCE;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.flow-step-title {
+  font-size: 20px;
+  color: #333333;
+}
+
+.flow-step-body {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.flow-step-img-wrap {
+  width: 180px;
+  height: 120px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flow-step-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.flow-step-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444444;
+}
+
+.flow-connector-arrow {
+  font-size: 24px;
+  color: #347DCE;
+  margin: 10px 0;
+}
+
+/* 「利用の流れ」ページのスマホレスポンシブ調整 */
+@media (max-width: 768px) {
+  .title-with-lines h2 {
+    font-size: 22px;
+    padding: 0 15px;
+  }
+
+  .flow-step-card {
+    padding: 20px;
+  }
+
+  .flow-step-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
+  .flow-step-img-wrap {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+/* ==========================================
+   フッター
+   ========================================== */
+footer {
+  background-color: #cfd8dc;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 2px solid #333;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer-company {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.copyright {
+  font-size: 11px;
+  color: #555;
+}
+
+/* ==========================================
+   「料金表」個別ページ (price.html) スタイル
+   ========================================== */
+
+.price-lead {
+  text-align: center;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+/* プランカードグリッド */
+.price-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.price-card {
+  flex: 1;
+  max-width: 300px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 一番人気カードのハイライト */
+.price-card.popular {
+  border: 2px solid #347DCE;
+}
+
+.price-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #347DCE;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.price-card-header {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.price-card-header h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.price-sub {
+  font-size: 12px;
+  color: #777;
+}
+
+.price-amount {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.price-num {
+  font-size: 32px;
+  font-weight: bold;
+  color: #347DCE;
+}
+
+.price-unit {
+  font-size: 12px;
+  color: #666;
+}
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  flex-grow: 1;
+}
+
+.price-features li {
+  font-size: 13px;
+  color: #444;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+  text-align: center;
+}
+
+.price-features li strong {
+  color: #347DCE;
+}
+
+.btn-price-select {
+  display: block;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  padding: 12px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-price-select:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-price-select.active {
+  background-color: #CA3939;
+  color: #ffffff;
+}
+
+.btn-price-select.active:hover {
+  opacity: 0.85;
+}
+
+/* ------------------------------------------
+   オプション料金テーブル
+   ------------------------------------------ */
+.option-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.option-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.price-table th,
+.price-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.price-table th {
+  background-color: #f9f9f9;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  width: 60%;
+}
+
+.price-table td {
+  text-align: right;
+  color: #555;
+}
+
+/* ------------------------------------------
+   レスポンシブ対応（スマホ時）
+   ------------------------------------------ */
+@media (max-width: 768px) {
+  .price-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+}
+
+/* ==========================================
+   「FAQ」個別ページ (faq.html) スタイル
+   ========================================== */
+
+.faq-lead {
+  text-align: center;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* 質問（ボタン部分） */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.faq-question:hover {
+  background-color: #f9f9f9;
+}
+
+/* Qアイコン */
+.faq-q-icon {
+  font-weight: bold;
+  font-size: 20px;
+  color: #347DCE;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.faq-question-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  flex-grow: 1;
+  padding-right: 20px;
+  line-height: 1.5;
+}
+
+/* プラス/マイナス変換アイコン */
+.faq-toggle-icon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.faq-toggle-icon::before,
+.faq-toggle-icon::after {
+  content: "";
+  position: absolute;
+  background-color: #347DCE;
+  transition: transform 0.3s ease;
+}
+
+/* 横線 */
+.faq-toggle-icon::before {
+  top: 8px;
+  left: 0;
+  width: 18px;
+  height: 2px;
+}
+
+/* 縦線 */
+.faq-toggle-icon::after {
+  top: 0;
+  left: 8px;
+  width: 2px;
+  height: 18px;
+}
+
+/* 開いた状態のアニメーション（縦線を回転させてマイナス「ー」にする） */
+.faq-item.is-open .faq-toggle-icon::after {
+  transform: rotate(90deg);
+}
+
+/* 回答エリア */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: #fbfbfb;
+  border-top: 1px solid transparent;
+}
+
+.faq-item.is-open .faq-answer {
+  border-top-color: #f0f0f0;
+}
+
+.faq-answer-content {
+  display: flex;
+  padding: 20px;
+}
+
+/* Aアイコン */
+.faq-a-icon {
+  font-weight: bold;
+  font-size: 20px;
+  color: #CA3939;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.faq-answer-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555555;
+}
+
+/* スマホ表示対応 */
+@media (max-width: 768px) {
+  .faq-question {
+    padding: 15px;
+  }
+  
+  .faq-question-text {
+    font-size: 14px;
+  }
+  
+  .faq-answer-content {
+    padding: 15px;
+  }
+  
+  .faq-answer-content p {
+    font-size: 13px;
+  }
+}
+
+/* ==========================================
+   「会社概要」個別ページ (company.html) スタイル
+   ========================================== */
+
+.company-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 企業メッセージボックス */
+.company-message-box {
+  background-color: #f4f8fc;
+  border-left: 4px solid #347DCE;
+  padding: 25px 30px;
+  margin-bottom: 40px;
+  border-radius: 0 8px 8px 0;
+}
+
+.company-message-box h3 {
+  font-size: 18px;
+  color: #347DCE;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.company-message-box p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+}
+
+/* 会社情報テーブル */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-top: 2px solid #347DCE;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.company-table th,
+.company-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.company-table th {
+  width: 25%;
+  background-color: #f9f9f9;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  vertical-align: top;
+}
+
+.company-table td {
+  color: #555;
+}
+
+/* レスポンシブ対応（スマホ時） */
+@media (max-width: 768px) {
+  .company-message-box {
+    padding: 20px;
+  }
+
+  .company-message-box h3 {
+    font-size: 16px;
+  }
+
+  .company-message-box p {
+    font-size: 13px;
+  }
+
+  .company-table th,
+  .company-table td {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+  }
+
+  .company-table th {
+    background-color: #f0f4f8;
+    border-bottom: none;
+    padding-bottom: 6px;
+  }
+
+  .company-table td {
+    padding-top: 6px;
+  }
+}

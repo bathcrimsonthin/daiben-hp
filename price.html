@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>料金表 - 代便（排泄代行サービス）</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 共通固定ヘッダー -->
+  <header>
+    <div class="header-top">
+      <div class="logo-area">
+        <img src="imgs/icon.png" alt="代便アイコン" class="logo-icon">
+        <h1>代便</h1>
+        <span>排泄代行サービス</span>
+      </div>
+      
+      <!-- 右側エリア（申込みボタン＋ハンバーガーボタン） -->
+      <div class="header-right">
+        <a href="apply.html" class="btn-apply">申込みはこちらから</a>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-menu" id="js-nav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="flow.html">利用の流れ</a></li>
+        <li><a href="price.html">料金表</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="apply.html">申し込み</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="page-container">
+    <!-- 両側に罫線のある中央見出し -->
+    <div class="title-with-lines">
+      <h2>料金表</h2>
+    </div>
+
+    <!-- プランカード一覧 -->
+    <section class="price-section">
+      <p class="price-lead">お客様のライフスタイルに合わせて選べる3つの月額プランをご用意しております。</p>
+
+      <div class="price-grid">
+        <!-- ライトプラン -->
+        <div class="price-card">
+          <div class="price-card-header">
+            <h3>ライト</h3>
+            <p class="price-sub">まずは試してみたい方に</p>
+          </div>
+          <div class="price-amount">
+            <span class="price-num">9,800</span>
+            <span class="price-unit">円 / 月 (税込)</span>
+          </div>
+          <ul class="price-features">
+            <li>月のアポート回数：<strong>上限 10回</strong></li>
+            <li>アポート対応時間：<strong>8:00〜22:00</strong></li>
+            <li>アポート優先度：<strong>標準</strong></li>
+          </ul>
+          <a href="apply.html" class="btn-price-select">このプランを選択</a>
+        </div>
+
+        <!-- スタンダードプラン（一番人気） -->
+        <div class="price-card popular">
+          <div class="price-badge">一番人気</div>
+          <div class="price-card-header">
+            <h3>スタンダード</h3>
+            <p class="price-sub">日常的に快適に使いたい方に</p>
+          </div>
+          <div class="price-amount">
+            <span class="price-num">19,800</span>
+            <span class="price-unit">円 / 月 (税込)</span>
+          </div>
+          <ul class="price-features">
+            <li>月のアポート回数：<strong>無制限</strong></li>
+            <li>アポート対応時間：<strong>24時間対応</strong></li>
+            <li>アポート優先度：<strong>標準</strong></li>
+          </ul>
+          <a href="apply.html" class="btn-price-select active">このプランを選択</a>
+        </div>
+
+        <!-- プレミアムプラン -->
+        <div class="price-card">
+          <div class="price-card-header">
+            <h3>プレミアム</h3>
+            <p class="price-sub">最優先アポート＆手厚いサポート</p>
+          </div>
+          <div class="price-amount">
+            <span class="price-num">29,800</span>
+            <span class="price-unit">円 / 月 (税込)</span>
+          </div>
+          <ul class="price-features">
+            <li>月のアポート回数：<strong>無制限</strong></li>
+            <li>アポート対応時間：<strong>24時間対応</strong></li>
+            <li>アポート優先度：<strong>優先</strong></li>
+          </ul>
+          <a href="apply.html" class="btn-price-select">このプランを選択</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 共通フッター -->
+  <footer>
+    <div class="footer-logo">代便</div>
+    <div class="footer-company">株式会社DAIBEN</div>
+    <div class="copyright">© 20XX DAIBEN Inc. All Rights Reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代便 - 排泄代行サービス</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="logo-area">
+        <img src="imgs/icon.png" alt="代便アイコン" class="logo-icon">
+        <h1>代便</h1>
+        <span>排泄代行サービス</span>
+      </div>
+      
+      <!-- 右側エリア（申込みボタン＋ハンバーガーボタン） -->
+      <div class="header-right">
+        <a href="apply.html" class="btn-apply">申込みはこちらから</a>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-menu" id="js-nav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="flow.html">利用の流れ</a></li>
+        <li><a href="price.html">料金表</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="apply.html">申し込み</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メインビジュアル（ヒーローセクション） -->
+  <section class="hero">
+    <!-- 1. 背景スライドショー -->
+    <div class="hero-slider">
+      <div class="slider-track">
+        <!-- 1セット目 -->
+        <img src="imgs/photo1.jpg" alt="晩酌" class="slide">
+        <img src="imgs/photo2.jpg" alt="ビジネスシーン" class="slide">
+        <img src="imgs/photo4.jpg" alt="パーティー" class="slide">
+        <img src="imgs/photo5.jpg" alt="結婚式" class="slide">
+        <img src="imgs/photo6.jpg" alt="寝起き" class="slide">
+        <img src="imgs/photo7.jpg" alt="スノーボード" class="slide">
+        
+        <!-- 2セット目（シームレスにループさせるための複製） -->
+        <img src="imgs/photo1.jpg" alt="晩酌" class="slide">
+        <img src="imgs/photo2.jpg" alt="ビジネスシーン" class="slide">
+        <img src="imgs/photo4.jpg" alt="パーティー" class="slide">
+        <img src="imgs/photo5.jpg" alt="結婚式" class="slide">
+        <img src="imgs/photo6.jpg" alt="寝起き" class="slide">
+        <img src="imgs/photo7.jpg" alt="スノーボード" class="slide">
+      </div>
+    </div>
+
+    <!-- 2. 可読性向上のための半透明オーバーレイ膜 -->
+    <div class="hero-overlay"></div>
+
+    <!-- 3. 前面に表示するキャッチコピー -->
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span>い</span>つでも、<br>すっきり。
+      </h1>
+    </div>
+  </section>
+
+  <!-- 利用の流れセクション -->
+  <section class="steps-section">
+    <h2 class="steps-title">下半身に振り回される生活、辞めませんか？</h2>
+    <div class="steps-container">
+      <div class="step-box">
+        <!--<div class="step-num">Step.1</div>-->
+        <div class="step-img-wrap">
+          <img src="imgs/step1.png" alt="体内にアポート" class="step-img">
+        </div>
+        <p class="step-desc">
+          排泄物をスタッフの体内にアポート！<br>
+          有資格(乙種第七類生体取扱者)のスタッフが丁寧に転送します。
+        </p>
+      </div>
+
+      <div class="step-arrow">➔</div>
+
+      <div class="step-box">
+        <!--<div class="step-num">Step.2</div>-->
+        <div class="step-img-wrap">
+          <img src="imgs/step2.png" alt="スタッフが代わりに排泄" class="step-img">
+        </div>
+        <p class="step-desc">
+          スタッフが代わりに排泄！<br>
+          当社の専用処理施設で速やかに処理されます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- こんな方におすすめ！セクション -->
+  <section class="recommend-section">
+    <h2 class="recommend-title">こんな方におすすめ！</h2>
+    <div class="recommend-grid">
+      <div class="recommend-item">
+        <div class="circle-img">
+          <img src="imgs/recommend1.jpg" alt="高齢男性">
+        </div>
+        <p>最近、<br>トイレが近い...</p>
+      </div>
+      <div class="recommend-item">
+        <div class="circle-img">
+          <img src="imgs/recommend2.jpg" alt="便秘の女性">
+        </div>
+        <p>便秘で苦しい...</p>
+      </div>
+      <div class="recommend-item">
+        <div class="circle-img">
+          <img src="imgs/recommend3.jpg" alt="スーツの中年男性">
+        </div>
+        <p>残尿感があって...</p>
+      </div>
+      <div class="recommend-item">
+        <div class="circle-img">
+          <img src="imgs/recommend4.jpg" alt="被介護者">
+        </div>
+        <p>トイレに行くのが大変...</p>
+      </div>
+      <div class="recommend-item">
+        <div class="circle-img">
+          <img src="imgs/recommend5.jpg" alt="登山家">
+        </div>
+        <p>近くに<br>トイレがない...</p>
+      </div>
+    </div>
+    <p class="recommend-summary">そんなあなたのための、排泄代行サービス「代便」です！</p>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-logo">代便</div>
+    <div class="footer-company">株式会社DAIBEN</div>
+    <div class="copyright">© 20XX DAIBEN Inc. All Rights Reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
